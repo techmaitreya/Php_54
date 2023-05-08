@@ -1,6 +1,6 @@
-# MSRB GA VERSION: V1.3
+# VERSION: V1.4
 
-name: MSRB
+name: Deploy Original
 
 on:
 
@@ -31,7 +31,7 @@ env:
   ACCOUNTS: ${{ secrets.ACCOUNTS }}
   RETRY_THE_BOT: True
   DELETE_OLD_WORKFLOWS: True
-  DELETE_OLD_WORKFLOWS_SECOND: 604800
+  DELETE_OLD_WORKFLOWS_SECOND: 86400
   PRINT_OUT_THE_LOG_AFTER_RUNNING_BOT: True
   COMMIT_LOG_ACCOUNTS_JSON_AFTER_RUNNING_BOT: True
   COMMIT_ALL_REPO_AFTER_RUNNING_BOT: False
@@ -45,8 +45,12 @@ jobs:
     timeout-minutes: 30 # Limit the time of the bot
 
     steps:
+
+    - name: Check Public IP
+      uses: haythem/public-ip@master
+
     - name: checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@main
 
 # SET REPO STUFF
 
